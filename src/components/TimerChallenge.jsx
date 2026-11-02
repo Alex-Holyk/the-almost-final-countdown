@@ -3,8 +3,8 @@ import { useRef, useState } from "react";
 import ResultModal from "./ResultModal";
 
 export default function TimerChallenge({ title, targetTime }) {
-  const timerRef = useRef();
-  const dialogRef = useRef();
+  const timerRef = useRef(null);
+  const dialogRef = useRef(null);
 
   const [timerStarted, setTimerStarted] = useState(false);
   const [timerExpired, setTimerExpired] = useState(false);
@@ -12,7 +12,7 @@ export default function TimerChallenge({ title, targetTime }) {
   function handleStart() {
     timerRef.current = setTimeout(() => {
       setTimerExpired(true);
-      dialogRef.current.showModal();
+      dialogRef.current.open();
     }, targetTime * 1000);
     setTimerStarted(true);
   }
